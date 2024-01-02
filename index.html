@@ -3,9 +3,75 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Portfolio</title>
+        <title>Portfolio</title>
+        <script defer src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap" rel="stylesheet">
     </head>
-    <body>
-        <h1>Hello world</h1>
+    <body data-theme="light">
+        <dialog id="image-dialog">
+            <div>
+                <img src="" alt="">
+                <button autofocus>Close</button>
+            </div>
+        </dialog>
+        <header>
+            <h1>brunomisto</h1>
+            <nav>
+                <ul>
+                    <li><a href="#welcome">Welcome!</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#" id="toggle-theme">Toggle Theme</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="welcome-section" aria-labelledby="welcome">
+                <h2 id="welcome">Welcome to my Portfolio!</h2>
+                <p>My name is Bruno and I always liked computers and had curiosity to learn about how technology works</p>
+                <p>I started my journey with <a target="_blank" href="https://cs50.harvard.edu/x/">CS50's</a> Computer Science introductory course</p>
+                <p>I'm currently learning web development</p>
+                <p>Feel free to take a look at my <a href="#projects">projects</a></p>
+            </section>
+            <section id="tools-section" aria-labelledby="tools">
+                <h2 id="tools">Tools</h2>
+                <p>I'm currently comfortable with</p>
+                <ul>
+                    <li>JavaScript</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Python</li>
+                    <li>Django</li>
+                    <li>C</li>
+                </ul>
+            </section>
+            <section id="projects-section" aria-labelledby="projects">
+                <h2 id="projects">Projects</h2>
+                <ul>
+                    <li>
+                        <div class="project-content">
+                            <h3>League of Legends Automation</h3>
+                            <p>This script will connect to League Client API and automatically disenchant useless champion fragments</p>
+                            <p>I made it to test my Python knowledge and because it was annoying to deal with those fragments manually</p>
+                            <p><a href="https://github.com/brunomisto/useless-champions" target="_blank">GitHub Repo</a></p>
+                        </div>
+                        <figure>
+                            <img class="clickable-image" src="assets/league-automation-screenshot.png" alt="League Client screenshot with terminal running python automation">
+                            <figcaption>Python automation running on League Client API</figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <footer>
+            <p>Lets keep in touch</p>
+            <ul>
+                <li><a href="https://github.com/brunomisto" target="_blank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/bruno-ottonelli-copatti-b18010275/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </footer>
     </body>
 </html>
