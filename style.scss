@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+$light: #e6e6e6;
+$dark: #202020;
+$dark-blue: #536aeb;
+
+* {
+  color: $light;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Varela Round", sans-serif;
+}
+
+html {
+  font-size: 24px;
+}
+
+body {
+  background-color: $dark;
+  margin: 0 2rem;
+}
+
+nav {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    display: block;
+    font-size: 2.5rem;
+    color: $light;
+  }
+
+  .logo::first-letter {
+    color: $dark-blue;
+  }
+
+  #toggle-links {
+    display: none;
+  }
+
+  .links li {
+    display: inline-block;
+    margin-left: 0.5rem;
+    a {
+      color: $light;
+      text-decoration: none;
+    }
+    position: relative;
+  }
+
+  .links li::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: $dark-blue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition-property: width;
+    transition-duration: 500ms;
+  }
+
+  .links li:hover::after {
+    width: 100%;
+  }
+}
+
+p {
+  line-height: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+section {
+  margin-bottom: 1.5rem;
+}
+
+#home {
+  text-align: center;
+}
+
+.cube-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cube {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 0px;
+  height: 0px;
+
+  transform: translateY(-100%);
+  perspective-origin: center;
+  transform-style: preserve-3d;
+  animation-name: cubeMovement;
+  animation-iteration-count: infinite;
+  animation-duration: 7s;
+  animation-timing-function: linear;
+
+  .side {
+    border: 1px solid $dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $dark;
+    background-color: $light;
+    opacity: 0.4;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+  }
+
+  .side.top {
+    transform: rotateX(90deg) translateZ(50px);
+  }
+
+  .side.right {
+    transform: rotateY(90deg) translateZ(50px);
+  }
+
+  .side.back {
+    transform: translateZ(-50px);
+  }
+
+  .side.front {
+    transform: translateZ(50px);
+  }
+
+  .side.left {
+    transform: rotateY(-90deg) translateZ(50px);
+  }
+
+  .side.down {
+    transform: rotateX(90deg) translateZ(-50px);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 0 1.5rem;
+  }
+
+  .links-container {
+    position: relative;
+
+    #toggle-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      transition: transform 250ms;
+
+      .circle {
+        position: absolute;
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: $light;
+        border-radius: 100%;
+      }
+
+      .circle.top {
+        top: 0;
+      }
+
+      .circle.bottom {
+        bottom: 0;
+      }
+    }
+
+    .links {
+      transition: 250ms;
+      transform-origin: top;
+      transform: scaleY(0);
+
+      position: absolute;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      padding: 0.25rem;
+
+      background-color: $light;
+
+      li {
+        margin: 0;
+        width: fit-content;
+
+        a {
+          color: $dark;
+        }
+      }
+    }
+  }
+
+  .links-container.active {
+    #toggle-links {
+      transform: rotate(calc(360deg + 90deg));
+    }
+
+    .links {
+      z-index: 1;
+      transform: scaleY(1);
+    }
+  }
+}
+
+@keyframes cubeMovement {
+  from {
+    transform: rotateZ(0) rotateX(0) rotateY(0);
+  }
+
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}

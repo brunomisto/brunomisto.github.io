@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+* {
+  color: #e6e6e6;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Varela Round", sans-serif;
+}
+
+html {
+  font-size: 24px;
+}
+
+body {
+  background-color: #202020;
+  margin: 0 2rem;
+}
+
+nav {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .logo {
+  display: block;
+  font-size: 2.5rem;
+  color: #e6e6e6;
+}
+nav .logo::first-letter {
+  color: #536aeb;
+}
+nav #toggle-links {
+  display: none;
+}
+nav .links li {
+  display: inline-block;
+  margin-left: 0.5rem;
+  position: relative;
+}
+nav .links li a {
+  color: #e6e6e6;
+  text-decoration: none;
+}
+nav .links li::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: #536aeb;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition-property: width;
+  transition-duration: 500ms;
+}
+nav .links li:hover::after {
+  width: 100%;
+}
+
+p {
+  line-height: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+section {
+  margin-bottom: 1.5rem;
+}
+
+#home {
+  text-align: center;
+}
+
+.cube-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cube {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0px;
+  height: 0px;
+  transform: translateY(-100%);
+  perspective-origin: center;
+  transform-style: preserve-3d;
+  animation-name: cubeMovement;
+  animation-iteration-count: infinite;
+  animation-duration: 7s;
+  animation-timing-function: linear;
+}
+.cube .side {
+  border: 1px solid #202020;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #202020;
+  background-color: #e6e6e6;
+  opacity: 0.4;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+.cube .side.top {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.cube .side.right {
+  transform: rotateY(90deg) translateZ(50px);
+}
+.cube .side.back {
+  transform: translateZ(-50px);
+}
+.cube .side.front {
+  transform: translateZ(50px);
+}
+.cube .side.left {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.cube .side.down {
+  transform: rotateX(90deg) translateZ(-50px);
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.project {
+  height: 350px;
+  border: 1px solid #e6e6e6;
+  display: flex;
+  flex-direction: column;
+}
+.project .img {
+  flex: 1;
+  border-bottom: 1px solid #e6e6e6;
+}
+.project .content {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 0 1.5rem;
+  }
+  .links-container {
+    position: relative;
+  }
+  .links-container #toggle-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    transition: transform 250ms;
+  }
+  .links-container #toggle-links .circle {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: #e6e6e6;
+    border-radius: 100%;
+  }
+  .links-container #toggle-links .circle.top {
+    top: 0;
+  }
+  .links-container #toggle-links .circle.bottom {
+    bottom: 0;
+  }
+  .links-container .links {
+    transition: 250ms;
+    transform-origin: top;
+    transform: scaleY(0);
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding: 0.25rem;
+    background-color: #e6e6e6;
+  }
+  .links-container .links li {
+    margin: 0;
+    width: fit-content;
+  }
+  .links-container .links li a {
+    color: #202020;
+  }
+  .links-container.active #toggle-links {
+    transform: rotate(450deg);
+  }
+  .links-container.active .links {
+    z-index: 1;
+    transform: scaleY(1);
+  }
+}
+@keyframes cubeMovement {
+  from {
+    transform: rotateZ(0) rotateX(0) rotateY(0);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
